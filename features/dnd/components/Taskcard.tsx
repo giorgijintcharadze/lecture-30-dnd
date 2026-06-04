@@ -1,15 +1,21 @@
-import { TaskCardprops } from "../types";
-import { useDraggable } from "@dnd-kit/core";
+"use client";
 
-const Taskcard = ({ task }: TaskCardprops) => {
+import { useDraggable } from "@dnd-kit/core";
+import { TaskCardProps } from "../types";
+import { CSS } from "@dnd-kit/utilities";
+
+const TaskCard = ({ task }: TaskCardProps) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: task.id,
   });
 
-  const style = transform
-    ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
-    : undefined;
+  // const style = transform
+  //   ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
+  //   : undefined;
 
+  const style = {
+    transform: CSS.Translate.toString(transform),
+  };
   return (
     <div
       ref={setNodeRef}
@@ -24,4 +30,4 @@ const Taskcard = ({ task }: TaskCardprops) => {
   );
 };
 
-export default Taskcard;
+export default TaskCard;

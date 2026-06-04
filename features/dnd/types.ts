@@ -15,8 +15,9 @@ export type ColumnType = {
 export type ColumnProps = {
   column: ColumnType;
   tasks: Task[];
+  handleCreateTask: (task: Omit<Task, "id">) => void;
 };
 
-export type TaskCardprops = {
+export type TaskCardProps = {
   task: Task;
 };
